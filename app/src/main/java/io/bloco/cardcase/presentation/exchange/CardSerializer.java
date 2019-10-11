@@ -1,19 +1,24 @@
 package io.bloco.cardcase.presentation.exchange;
 
 import com.google.gson.Gson;
-import io.bloco.cardcase.data.models.Card;
-import io.bloco.cardcase.presentation.common.FileHelper;
+
 import java.io.File;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import io.bloco.cardcase.data.models.Card;
+import io.bloco.cardcase.presentation.common.FileHelper;
 import timber.log.Timber;
 
-@Singleton public class CardSerializer {
+@Singleton
+public class CardSerializer {
 
   private final Gson gson;
   private final FileHelper fileHelper;
 
-  @Inject public CardSerializer(Gson gson, FileHelper fileHelper) {
+  @Inject
+  public CardSerializer(Gson gson, FileHelper fileHelper) {
     this.gson = gson;
     this.fileHelper = fileHelper;
   }
@@ -30,7 +35,7 @@ import timber.log.Timber;
     return unwrapCard(cardWrapper);
   }
 
-  public CardWrapper newCardWrapper(Card card) {
+  private CardWrapper newCardWrapper(Card card) {
     CardWrapper cardWrapper = new CardWrapper();
     cardWrapper.card = card;
     if (card.getAvatarPath() != null) {
@@ -39,7 +44,7 @@ import timber.log.Timber;
     return cardWrapper;
   }
 
-  public Card unwrapCard(CardWrapper cardWrapper) {
+  private Card unwrapCard(CardWrapper cardWrapper) {
     Card card = cardWrapper.card;
     if (card == null) {
       return null;

@@ -1,6 +1,6 @@
 package io.bloco.cardcase.helpers;
 
-import android.support.test.rule.ActivityTestRule;
+import androidx.test.rule.ActivityTestRule;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.table.TableUtils;
 import io.bloco.cardcase.AndroidApplication;
@@ -9,12 +9,13 @@ import io.bloco.faker.Faker;
 import java.sql.SQLException;
 import java.util.UUID;
 
+@SuppressWarnings("ALL")
 public class CardFactory {
 
   private final Faker faker;
   private RuntimeExceptionDao<Card, String> dao;
 
-  public CardFactory() {
+  private CardFactory() {
     faker = new Faker();
   }
 
@@ -28,7 +29,7 @@ public class CardFactory {
     this.dao = dao;
   }
 
-  public Card build() {
+  private Card build() {
     Card card = new Card();
     card.setId(UUID.randomUUID().toString());
     card.setName(faker.name.name());
@@ -45,7 +46,7 @@ public class CardFactory {
     return card;
   }
 
-  public Card buildReceivedCard() {
+  private Card buildReceivedCard() {
     Card card = build();
     card.setIsUser(false);
     return card;

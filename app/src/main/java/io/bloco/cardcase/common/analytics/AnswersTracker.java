@@ -1,7 +1,7 @@
 package io.bloco.cardcase.common.analytics;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;
 import java.util.Map;
@@ -21,8 +21,5 @@ public class AnswersTracker implements AnalyticsTracker {
     }
 
     Answers.getInstance().logCustom(event);
-  }
-
-  @Override public void terminate() {
   }
 }
